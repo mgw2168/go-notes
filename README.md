@@ -25,7 +25,7 @@ export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 
 #### 编译安装
 
-2种方式
+2种方式:
 
 * 代码完成后在任意的目录执行 `go install ${package_name}` 
 * 进入对应包的目录，进行 `go install` 
@@ -81,7 +81,49 @@ main.go hello
         └── main.go
 ```
 
+### 3.go 常用命令
+
+* go build
+
+见上面
+
 * go install 
 
 >  这个命令在内部实际上分成了两步操作：第一步是生成结果文件(可执行文件或者.a包)，第二步会把编译好的结果移到`$GOPATH/pkg`或者`$GOPATH/bin`。
+
+* go clean 
+
+用来移除当前源码包和关联源码包里编译生成的文件
+
+可以用来清除编译文件，然后使用git提交源码文件
+
+* go fmt 格式化代码
+
+`go fmt <filename>.go`  更多参考 [gofmt](https://docs.huihoo.com/go/golang.org/cmd/gofmt/index.html) 
+
+* go get
+
+该命令用来动态获取远程代码包，支持的有BitBucket、GitHub、Google Code和Launchpad。主要分两步：
+
+1. 下载源码
+2. 执行go install
+
+* go test
+
+执行测试文件，自动读取源码目录下 *_test.go 文件，生成并运行测试用的可执行文件
+
+* go tool
+  * `go tool fix .` 用来升级旧代码到新版本的，如 go1之前的版本升级到go1
+  * `go tool vet directory|files` 用来分析当前的代码是否有错误
+
+* 其他命令
+
+```go
+go version 查看go当前的版本
+go env 查看当前go的环境变量
+go list 列出当前全部安装的package
+go run 编译并运行Go程序
+```
+
+
 
